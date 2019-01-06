@@ -1,0 +1,56 @@
+$def with (backgroundCol)
+
+<html>
+<head>
+<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body bgcolor='$backgroundCol'><h1>Welcome to Stuart's RGB LED Site!</h1>
+
+<p>This site can be used to contol the lights in Stuart's room. Isn't that cool?</p>
+<p>Here are some options:</p>
+<p>Some colours to choose from:</p>
+
+<form action="changeColour", method="post">
+    <input type="submit" name="colour" value="red">
+    <input type="submit" name="colour" value="blue">
+    <input type="submit" name="colour" value="green">
+    <input type="submit" name="colour" value="white">
+    <input type="submit" name="colour" value="purple">
+</form>
+
+<p>Some fun little sequences:</p>
+
+<form action="changeSeq", method="post">
+    <input type="submit" name="seq" value="rgb">
+    <input type="submit" name="seq" value="sea">
+    <input type="submit" name="seq" value="rainbow">
+    <input type="submit" name="seq" value="sun">
+    <input type="submit" name="seq" value="wStrobe">
+    <input type="submit" name="seq" value="gStrobe">
+</form>
+
+<iframe id="colDemo", src="blank", style="display:block; visibility:visible background-color: red", height="20px", width="200px"></iframe>
+
+<form action="defineCol", method="post">
+    Red:   <input type="range" id="red" name="red"  min="0" max="255" oninput="colourBox()"><br>
+    Green: <input type="range" id="green" name="green" min="0" max="255" oninput="colourBox()"><br>
+    Blue:  <input type="range" id="blue" name="blue" min="0" max="255" oninput="colourBox()"><br>
+    <input type="submit" value="Do it!">
+</form>
+
+<script>
+function colourBox(){
+    var red   = document.getElementById("red").value;
+    var green = document.getElementById("green").value;
+    var blue  = document.getElementById("blue").value;
+
+    var demo = document.getElementById("colDemo");
+    //document.body.style.backgroundColor="red";
+    demo.style.backgroundColor=
+        'rgb(' + [red,green,blue].join(',') + ')';
+
+}
+
+</script>
+
+</body></html>
